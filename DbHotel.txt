@@ -1,0 +1,56 @@
+Configurazione Stanza:
+
+CREATE TABLE [dbo].[configurationRooms]
+(
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [title] NCHAR(50) NOT NULL, 
+    [description] NCHAR(255) NOT NULL, 
+    [type] NCHAR(200) NOT NULL,
+)
+
+Stanze:
+
+CREATE TABLE [dbo].[rooms]
+(
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [number_room] INT NOT NULL, 
+    [floor] INT NOT NULL, 
+    [beds] TINYINT NOT NULL,
+)
+
+Ospiti:
+
+CREATE TABLE [dbo].[customers]
+(
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [name] VARCHAR(50) NOT NULL, 
+    [surname] VARCHAR(50) NOT NULL, 
+    [birthday_date] DATETIME NOT NULL, 
+    [identity_id] NCHAR(50) NOT NULL, 
+    [identity_number] INT NOT NULL,
+)
+
+Prenotazioni:
+
+CREATE TABLE [dbo].[reservations]
+(
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY,
+    [room_id] INT NOT NULL, 
+    [configuration_id] VARCHAR(50) NOT NULL, 
+    [name] VARCHAR(50) NOT NULL,  
+    [date] DATETIME NOT NULL, 
+    [payment_status] NCHAR(50) NOT NULL, 
+    CONSTRAINT [FK_reservations_rooms] FOREIGN KEY ([room_id]) REFERENCES [rooms]([id]), 
+    CONSTRAINT [FK_reservations_configurationrooms] FOREIGN KEY ([configurationrooom_id]) REFERENCES [configurationrooms]([id]), 
+)
+
+Tabella ponte Prenotazioni-Clienti
+
+CREATE TABLE [dbo].[reservations_customers]
+(
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY,
+    [reservation_id] INT NOT NULL, 
+    [customer_id] VARCHAR(50) NOT NULL, 
+    CONSTRAINT [FK_reservations_customers_reservations] FOREIGN KEY ([reservation_id]) REFERENCES [reservations]([id]), 
+    CONSTRAINT [FK_reservations_customers_customers] FOREIGN KEY ([customer_id]) REFERENCES [customers]([id]), 
+)
