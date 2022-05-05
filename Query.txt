@@ -28,6 +28,12 @@
 
 8 - Conta quante volte è stata prenotata ogni stanza
 
+    SELECT stanza_id COUNT(stanza_id) FROM prenotazioni GROUP BY stanza_id;
+
 9 - Stampare tutti gli ospiti per ogni prenotazione
 
+    SELECT prenotazione_id, ospiti.name, ospiti.surname, ospiti.document_number FROM ospiti JOIN prenotazioni_has_ospiti ON ospiti.id = ospite_id;
+
 10 - Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano
+
+     SELECT SUM(price) FROM pagamenti JOIN prenotazioni ON prenotazione_id = prenotazioni.id JOIN stanze ON stanza_id =   stanze.id WHERE floor = 1;
