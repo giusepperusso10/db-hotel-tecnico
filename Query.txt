@@ -18,8 +18,16 @@
 
     SELECT MAX(price) FROM pagamenti WHERE status = 'accepted';
 
-6 -
+6 - Quanti posti letto ha l'hotel ?
 
-7 -
+    SELECT SUM(beds) FROM stanze;
 
-8 -
+7 - Somma i prezzi dei pagamenti raggruppandoli per status
+
+    SELECT status, SUM(price) FROM pagamenti GROUP BY status;
+
+8 - Conta quante volte è stata prenotata ogni stanza
+
+9 - Stampare tutti gli ospiti per ogni prenotazione
+
+10 - Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano
