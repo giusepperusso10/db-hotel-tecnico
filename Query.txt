@@ -1,5 +1,25 @@
-1 - SELECT * FROM ospiti WHERE document_type = 'CI';
+1 - Seleziona tutti gli ospiti che sono stati identificati con la carta di identità
 
-2 - SELECT * FROM ospiti WHERE YEAR(date_of_birth) > 1988;
+    SELECT * FROM ospiti WHERE document_type = 'CI';
 
-3 - SELECT * FROM ospiti WHERE name LIKE 'D%';
+2 - Seleziona tutti gli ospiti che sono nati dopo il 1988
+
+    SELECT * FROM ospiti WHERE YEAR(date_of_birth) > 1988;
+
+3 - Seleziona tutti gli ospiti il cui nome inizia con la D
+
+    SELECT * FROM ospiti WHERE name LIKE 'D%';
+
+4 - Calcola il totale incassato degli ordini accepted
+
+    SELECT SUM(price) FROM pagamenti WHERE status = 'accepted';
+
+5 - Qual è il prezzo massimo pagato ?
+
+    SELECT MAX(price) FROM pagamenti WHERE status = 'accepted';
+
+6 -
+
+7 -
+
+8 -
